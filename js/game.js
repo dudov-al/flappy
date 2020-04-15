@@ -49,27 +49,25 @@ function draw() {
         x: cvs.width,
         y: Math.floor(Math.random() * pipeUp.height - pipeUp.height),
       });
-      
     }
 
-   if (cvs.width - pipe[i].x == 0){
-        pipe.shift({
-            x: cvs.width,
-            y: Math.floor(Math.random() * pipeUp.height - pipeUp.height),
-          });
+    if (cvs.width - pipe[i].x == 0) {
+      pipe.shift({
+        x: cvs.width,
+        y: Math.floor(Math.random() * pipeUp.height - pipeUp.height),
+      });
     }
     if (
       (xPos + bird.width >= pipe[i].x &&
         xPos <= pipe[i].x + pipeUp.width &&
         (yPos <= pipe[i].y + pipeUp.height ||
-          yPos + bird.height >= pipe[i].y + pipeUp.height + gap) ||
-      yPos + bird.height >= cvs.height - fg.height)
-    ) {
-      location.reload(); //Перезапуск страницы
+          yPos + bird.height >= pipe[i].y + pipeUp.height + gap)||
+          yPos + bird.height >= cvs.height - fg.height) 
+    ) { throw(location.reload(true)); //Перезапуск страницы
     }
 
-    if(pipe[i].x == 5){
-        score++;
+    if (pipe[i].x == 5) {
+      score++;
     }
   }
 
@@ -78,7 +76,6 @@ function draw() {
 
   yPos += grav;
   grav = grav + 0.074;
-  
 
   ctx.fillStyle = "#000";
   ctx.backgroundStyle = "#000";
